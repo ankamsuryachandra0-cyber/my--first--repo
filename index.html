@@ -1,0 +1,35 @@
+# Simple movie ticket booking simulation
+
+movies = {
+    1: {"name": "Avengers: Endgame", "price": 10},
+    2: {"name": "Inception", "price": 8},
+    3: {"name": "The Lion King", "price": 7},
+    4: {"name": "Spider-Man: No Way Home", "price": 9}
+}
+
+def show_movies():
+    print("Available Movies:")
+    for key, movie in movies.items():
+        print(f"{key}. {movie['name']} - ${movie['price']} per ticket")
+
+def book_tickets():
+    show_movies()
+    choice = int(input("Select the movie number you want to book tickets for: "))
+    
+    if choice not in movies:
+        print("Invalid choice!")
+        return
+    
+    tickets = int(input("How many tickets do you want to book? "))
+    
+    if tickets <= 0:
+        print("Number of tickets must be greater than zero.")
+        return
+    
+    total_cost = tickets * movies[choice]["price"]
+    print(f"You have booked {tickets} tickets for '{movies[choice]['name']}'.")
+    print(f"Total cost: ${total_cost}")
+    print("Thank you for booking!")
+
+if __name__ == "__main__":
+    book_tickets()
